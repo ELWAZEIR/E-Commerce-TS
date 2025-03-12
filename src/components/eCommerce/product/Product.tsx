@@ -11,6 +11,7 @@ const dispatch=useDispatch();
 const addToCartHandler=()=>{
   dispatch(addToCart(id))
 }
+console.log("from Product");
 
   return (
     <div className={product}>

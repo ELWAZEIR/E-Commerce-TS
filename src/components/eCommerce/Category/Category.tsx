@@ -4,6 +4,8 @@ import styles from "./styles.module.css";
 const { category, categoryImg, categoryTitle } = styles;
 
 const Category = ({ title, img, prefix }: TCategory) => {
+  console.log("from Categorry");
+  
   return (
     <div className={category}>
       <Link to={`/categories/products/${prefix}`}>
