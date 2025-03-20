@@ -6,6 +6,7 @@ import Loading from "@components/feedback/Loding";
 import GridList from "@components/GridList/GridList";
 import Category from "@components/eCommerce/Category/Category";
 import { TCategory } from "@customTypes/category";
+import Heading from "@components/common/heading/Heading";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,9 @@ const Categories = () => {
 
   return (
     <Container>
+      <Heading>
+      categories
+      </Heading>
       <Loading status={loading} error={error}>
       <GridList<TCategory> records={records} renderItem={(record)=><Category {...record}/>}/>
       </Loading>

@@ -6,8 +6,6 @@ interface ICartState{
     items:{[key:number]:number}
     productFullInfo:TProduct[]
 }
-
-
 const initialState:ICartState={
     items:{},
     productFullInfo:[]

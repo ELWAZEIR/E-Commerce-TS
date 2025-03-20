@@ -1,17 +1,31 @@
 
-import { Button } from "react-bootstrap";
+import { Button ,Spinner} from "react-bootstrap";
 import styles from "./style.module.css";
 import { TProduct } from "@customTypes/product";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@store/Cart/Cart";
-const { product, productImg } = styles;
+import { memo, useEffect, useState } from "react";
+const { product, productImg ,maximumNotice} = styles;
 
-const Product = ({id,title,img,price}:TProduct) => {
+const Product = memo(({id,title,img,price,max,quantity}:TProduct) => {
 const dispatch=useDispatch();
+const [isBtnDisabled,setIsBtnDisabled]=useState(false)
+
+const currentreminigQuantity= max - (quantity ?? 0)
+const quantityReachedToMax=currentreminigQuantity === 0? true:false
+
+useEffect(()=>{
+  if (!isBtnDisabled) {
+    return
+  }
+  const debounce=setTimeout(()=>{setIsBtnDisabled(false)},300)
+  return ()=>clearTimeout(debounce)
+},[isBtnDisabled])
+
 const addToCartHandler=()=>{
   dispatch(addToCart(id))
+  setIsBtnDisabled(true)
 }
-console.log("from Product");
 
   return (
     <div className={product}>
@@ -22,12 +36,12 @@ console.log("from Product");
         />
       </div>
       <h2>{title}</h2>
-      <h3>{price} EGP</h3>
-      <Button variant="info" style={{ color: "white" }} onClick={addToCartHandler}>
-        Add to cart
+      <h3>{price.toFixed(2)} EGP</h3>
+      <p className={maximumNotice}>{quantityReachedToMax?"You reach to the limit":`you can add ${currentreminigQuantity} item(s)`}</p>
+      <Button variant="info" style={{ color: "white" }} onClick={addToCartHandler} disabled={isBtnDisabled||quantityReachedToMax}>
+        {isBtnDisabled?<Spinner animation="grow"  size="sm"/>:"Add to cart"}
       </Button>
     </div>
   );
-};
-
+});
 export default Product;
