@@ -11,8 +11,8 @@ function CartItem() {
         <img src='' alt='hh' />
       </div>
       <div className={productInfo}>
-        {/* <h2>{title}</h2> */}
-        {/* <h3>{price.toFixed(2)} EGP</h3> */}
+        <h2>title</h2>
+        <h3>price EGP</h3>
         <Button
           variant="secondary"
           style={{ color: "white", width: "100px" }}
@@ -22,7 +22,6 @@ function CartItem() {
         </Button>
       </div>
     </div>
-
     <div className={cartItemSelection}>
       <span className="d-block mb-1">Quantity</span>
       <Form.Select >

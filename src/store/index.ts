@@ -3,7 +3,7 @@ import { persistStore, persistReducer ,FLUSH,PAUSE,REHYDRATE,PERSIST,PURGE,REGIS
 import storage from "redux-persist/lib/storage";
 import categories from "./categories/categoriesSlice";
 import products from "./product/productSlice";
-import cart from "./Cart/Cart";
+import cart from "./Cart/cartSlice";
 
 // const rootPersistConfig = {
 //   key: 'root',

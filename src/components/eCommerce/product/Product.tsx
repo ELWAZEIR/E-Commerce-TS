@@ -3,7 +3,7 @@ import { Button ,Spinner} from "react-bootstrap";
 import styles from "./style.module.css";
 import { TProduct } from "@customTypes/product";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@store/Cart/Cart";
+import { addToCart } from "@store/Cart/cartSlice";
 import { memo, useEffect, useState } from "react";
 const { product, productImg ,maximumNotice} = styles;
 
