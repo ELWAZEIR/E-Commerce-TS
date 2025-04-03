@@ -3,7 +3,7 @@ import { Badge, Navbar, Nav, Container } from "react-bootstrap";
 
 import styles from "./styles.module.css";
 import HeaderBasket from "@components/eCommerce/headerBasket/HeaderBasket";
-import HeaderWishList from "@components/eCommerce/headerWishList/headerWishList";
+import HeaderWishList from "@components/eCommerce/headerWishList/HeaderWishList";
 const { headerContainer, headerLogo ,headerLeftBar} = styles;
 
 const Header = () => {

@@ -5,5 +5,6 @@ export type TProduct = {
     cat_prefix?: string;
     img: string;
     quantity?:number;
-    max:number
+    max:number;
+    isLiked?:boolean
   };

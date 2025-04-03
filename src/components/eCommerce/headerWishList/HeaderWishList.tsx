@@ -8,7 +8,7 @@ const { container, totalNum, pumpAnimate,iconWrapper } = styles;
 const HeaderWishList = () => {
   const [isAnimate, setIsAnimate] = useState(false);
   const quantityStyle = `${totalNum} ${isAnimate ? pumpAnimate : ""}`;
-  const TotalQuantity = 0;
+  const TotalQuantity = useAppSelector((state)=>state.wishlist.itemsId);
   const navigat=useNavigate()
   useEffect(() => {
     if (!TotalQuantity) { return } 
@@ -21,10 +21,10 @@ const HeaderWishList = () => {
 
   return (
       // <Link to="/cart" style={{textDecoration:"none" , color:'black'}}>
-    <div className={container} onClick={()=>navigat("/cart")}>
+    <div className={container} onClick={()=>navigat("/wishlist")}>
       <div className={iconWrapper}>
       <Logo title="basket icon" />
-      {TotalQuantity>0&&<div className={quantityStyle}>{TotalQuantity}</div>}
+      {TotalQuantity.length > 0 && <div className={quantityStyle}>{TotalQuantity.length}</div>}
       </div>
      <h3>WishList</h3>
     </div>

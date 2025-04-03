@@ -13,21 +13,24 @@ import Product from "@components/eCommerce/product/Product";
 import { TProduct } from "@customTypes/product";
 import Heading from "@components/common/heading/Heading";
 
+
 const Products = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
   const { loading, error, records } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
-  const productsFullInfo = records.map((el) => ({
-    ...el,
-    quantity: cartItems[el.id] || 0,
-  }));
+  const wishListItemsId=useAppSelector((state)=>state.wishlist.itemsId)
   useEffect(() => {
     dispatch(actGetProductsByCatPrefix(params.prefix as string));
     return () => {
       dispatch(productsCleanUp());
     };
   }, [dispatch, params]);
+  const productsFullInfo = records.map((el) => ({
+    ...el,
+    quantity: cartItems[el.id] || 0,
+    isLiked:wishListItemsId.includes(el.id)
+  }));
 
   return (
     <Container>
