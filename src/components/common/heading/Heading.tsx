@@ -1,6 +1,6 @@
-const Heading=({children}:{children:React.ReactNode}) => {
+const Heading=({title}:{title:React.ReactNode}) => {
   return (
-    <h2 className="mb-3" style={{fontSize:"26px"}}>{children}</h2>
+    <h2 className="mb-3" style={{fontSize:"26px"}}>{title}</h2>
   )
 }
 

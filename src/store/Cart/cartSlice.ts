@@ -1,8 +1,7 @@
-import { TProduct } from "@customTypes/product";
 import {createSlice } from "@reduxjs/toolkit";
 import { getCartTotalQuantitySelector } from "./selectors";
 import actGetProductsByItems from "./act/actGetProductByItems";
-import { TLoading } from "@customTypes/shared";
+import { isString, TLoading, TProduct } from "@types";
 
 interface ICartState {
   items: { [key: string]: number };
@@ -39,6 +38,7 @@ const cartSlice = createSlice({
         (el) => el.id !== action.payload
       );
     },
+    cleanUpCartProductFullinfo:(state)=>{state.productsFullInfo=[]}
   },
   extraReducers: (builder) => {
     builder.addCase(actGetProductsByItems.pending, (state) => {
@@ -51,7 +51,7 @@ const cartSlice = createSlice({
     });
     builder.addCase(actGetProductsByItems.rejected, (state, action) => {
       state.loading = "failed";
-      if (action.payload && typeof action.payload === "string") {
+      if (isString(action.payload)) {
         state.error = action.payload;
       }
     });
@@ -62,6 +62,6 @@ export {
   getCartTotalQuantitySelector,
   actGetProductsByItems,
 };
-export const { addToCart, cartItemChangeQuantity, cartItemRemove } =
+export const { addToCart, cartItemChangeQuantity, cartItemRemove,cleanUpCartProductFullinfo } =
   cartSlice.actions;
 export default cartSlice.reducer;
