@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import Loading from "@components/feedback/Loding";
 import GridList from "@components/GridList/GridList";
 import Product from "@components/eCommerce/product/Product";
-import { TProduct } from "@customTypes/product";
+import { TProduct } from "@types";
 import Heading from "@components/common/heading/Heading";
 import UseProducts from "@hooks/UseProducts";
 
@@ -14,7 +14,7 @@ const {error,loading,productsFullInfo,params}=UseProducts()
   return (
     <Container>
         <Heading title={`${params.prefix} Products`}/>
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="product">
         <GridList<TProduct>
           records={productsFullInfo}
           renderItem={(record) => <Product {...record} />}

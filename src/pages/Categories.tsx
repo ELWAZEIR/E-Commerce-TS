@@ -3,9 +3,9 @@ import { Container } from "react-bootstrap";
 import Loading from "@components/feedback/Loding";
 import GridList from "@components/GridList/GridList";
 import Category from "@components/eCommerce/Category/Category";
-import { TCategory } from "@customTypes/category";
 import Heading from "@components/common/heading/Heading";
 import UseCategories from "@hooks/UseCategories";
+import { TCategory } from "@types";
 
 const Categories = () => {
   const {error,loading,records}=UseCategories()
@@ -14,7 +14,7 @@ const Categories = () => {
       <Heading title='categories'/>
       
       
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="category">
       <GridList<TCategory> records={records} renderItem={(record)=><Category {...record}/>}/>
       </Loading>
     </Container>
