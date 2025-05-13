@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { Badge, Navbar, Nav, Container } from "react-bootstrap";
+import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import styles from "./styles.module.css";
 import HeaderLeftBar from "./headerLeftBar/HeaderLeftBar";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { authLogOut } from "@store/auth/AuthSlice";
 
 const { headerContainer, headerLogo } = styles;
 
 const Header = () => {
- 
+  const dispatch=useAppDispatch()
+ const {accessToken,user}=useAppSelector((state)=>state.auth)
   return (
     <header>
       <div className={headerContainer}>
@@ -36,12 +39,20 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link as={NavLink} to="login">
+              {!accessToken?<> <Nav.Link as={NavLink} to="login">
                 Login
               </Nav.Link>
               <Nav.Link as={NavLink} to="register">
                 Register
-              </Nav.Link>
+              </Nav.Link></>:<> <NavDropdown title={`Welcome ${user?.firstName} ${user?.lastName}`} id="basic-nav-dropdown">
+              <NavDropdown.Item >Profile</NavDropdown.Item>
+              <NavDropdown.Item >Orders</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={NavLink} to='/' onClick={()=>dispatch(authLogOut())} >LogOut</NavDropdown.Item>
+            </NavDropdown></>}
+             
+
+             
             </Nav>
           </Navbar.Collapse>
         </Container>
