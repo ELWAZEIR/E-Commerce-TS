@@ -1,48 +1,25 @@
-import Heading from "@components/common/heading/Heading";
 import { Input } from "@components/Form/Input";
 import { Alert, Button, Col, Form, Row, Spinner } from "react-bootstrap";
-import { signInSchema, logInType } from "@validations/logInSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate, useSearchParams,Navigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actAuthLogin, resetUi } from "@store/auth/AuthSlice";
-import { useEffect } from "react";
+import Heading from "@components/common/heading/Heading";
+import { Navigate } from "react-router-dom";
+import UseLogin from "@hooks/UseLogin";
 
 function Login() {
-  const dispatch = useAppDispatch();
-  const { error, loading ,accessToken} = useAppSelector((state) => state.auth);
-  const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<logInType>({
-    resolver: zodResolver(signInSchema),
-    mode: "onBlur",
-  });
-  const SubmitForm: SubmitHandler<logInType> = (data) => {
-    if (searchParams.get("message") === "account_created") {
-      setSearchParams("");
-    }
-    dispatch(actAuthLogin(data))
-      .unwrap()
-      .then(() => navigate("/"));
-  };
-  useEffect(() => {
-    return () => {
-      dispatch(resetUi());
-    };
-  },[dispatch]);
-if(accessToken) return <Navigate to="/"/>
+  const { error, loading ,accessToken, register,
+    handleSubmit,formErrors,SubmitForm,searchParams}=UseLogin()
+  if(accessToken) return <Navigate to="/"/>
 
   return (
     <>
       <Heading title="User Login" />
       <Row>
-        <Col md={{ offset: 3, span: 6 }}>
+      <Col md={{ span: 6, offset: 3 }}>
+          {searchParams.get("message") === "login_required" && (
+            <Alert variant="success">
+              You need to login to view this content
+            </Alert>
+          )}
+
           {searchParams.get("message") === "account_created" && (
             <Alert variant="success">
               Your account successfully created, please login
@@ -53,13 +30,13 @@ if(accessToken) return <Navigate to="/"/>
               label="E.mail"
               register={register}
               name="email"
-              error={errors.email?.message as string}
+              error={formErrors.email?.message as string}
             />
             <Input
               label="password"
               register={register}
               name="password"
-              error={errors.password?.message as string}
+              error={formErrors.password?.message as string}
               type="password"
             />
 

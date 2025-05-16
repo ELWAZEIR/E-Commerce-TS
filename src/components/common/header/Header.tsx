@@ -4,12 +4,18 @@ import styles from "./styles.module.css";
 import HeaderLeftBar from "./headerLeftBar/HeaderLeftBar";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { authLogOut } from "@store/auth/AuthSlice";
+import { useEffect } from "react";
+import { actGetWishlist } from "@store/wishlist/wishlistSlice";
 
 const { headerContainer, headerLogo } = styles;
 
 const Header = () => {
   const dispatch=useAppDispatch()
  const {accessToken,user}=useAppSelector((state)=>state.auth)
+ useEffect(() => {
+   dispatch(actGetWishlist("ProductIds"))
+ }, [accessToken,dispatch])
+ 
   return (
     <header>
       <div className={headerContainer}>
@@ -49,10 +55,7 @@ const Header = () => {
               <NavDropdown.Item >Orders</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={NavLink} to='/' onClick={()=>dispatch(authLogOut())} >LogOut</NavDropdown.Item>
-            </NavDropdown></>}
-             
-
-             
+            </NavDropdown></>}       
             </Nav>
           </Navbar.Collapse>
         </Container>

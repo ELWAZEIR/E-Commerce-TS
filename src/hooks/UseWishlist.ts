@@ -6,7 +6,7 @@ export default function UseWishlist() {
   const cartItems= useAppSelector((state)=>state.cart.items)
   const dispatch = useAppDispatch()
   useEffect(()=>{
-   const promise= dispatch(actGetWishlist())
+   const promise= dispatch(actGetWishlist("productsFullInfo"))
     return ()=>{promise.abort()
       dispatch(CleanUpWishlistproductsFullInfo())
     }
@@ -15,7 +15,8 @@ export default function UseWishlist() {
   const records = productsFullInfo.map((el) => ({
     ...el,
     quantity: cartItems[el.id] || 0,
-    isLiked:true
+    isLiked:true,
+    isAuthenticated:true
   }));
 
   return (

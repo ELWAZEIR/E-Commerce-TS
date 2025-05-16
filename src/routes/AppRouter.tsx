@@ -20,29 +20,59 @@ import ProtectedRoute from "@components/Auth/ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Suspense fallback={<LottieHandler type="loading" message="loading please wait.."/>}><MainLayout /></Suspense> ,
-    errorElement:<Error /> ,
+    element: (
+      <Suspense
+        fallback={
+          <LottieHandler type="loading" message="loading please wait.." />
+        }
+      >
+        <MainLayout />
+      </Suspense>
+    ),
+    errorElement: <Error />,
     children: [
       {
         index: true,
-        element:<PageSuspenseFallback><Home /></PageSuspenseFallback> ,
+        element: (
+          <PageSuspenseFallback>
+            <Home />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "cart",
-        element: <PageSuspenseFallback><Cart /></PageSuspenseFallback>,
+        element: (
+          <PageSuspenseFallback>
+            <Cart />
+          </PageSuspenseFallback>
+        ),
       },
-     
+
       {
         path: "wishlist",
-        element:<ProtectedRoute><PageSuspenseFallback><Wishlist /></PageSuspenseFallback></ProtectedRoute>  ,
+        element: (
+          <ProtectedRoute>
+            <PageSuspenseFallback>
+              <Wishlist />
+            </PageSuspenseFallback>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "categories",
-        element:<PageSuspenseFallback><Categories /></PageSuspenseFallback> ,
+        element: (
+          <PageSuspenseFallback>
+            <Categories />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "categories/products/:prefix",
-        element:<PageSuspenseFallback><Products /></PageSuspenseFallback> ,
+        element: (
+          <PageSuspenseFallback>
+            <Products />
+          </PageSuspenseFallback>
+        ),
         loader: ({ params }) => {
           if (
             typeof params.prefix !== "string" ||
@@ -58,19 +88,37 @@ const router = createBrowserRouter([
       },
       {
         path: "about-us",
-        element:<PageSuspenseFallback><AboutUs /></PageSuspenseFallback> ,
+        element: (
+          <PageSuspenseFallback>
+            <AboutUs />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "login",
-        element:<PageSuspenseFallback><Login /></PageSuspenseFallback> ,
+        element: (
+          <PageSuspenseFallback>
+            <Login />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "register",
-        element:<PageSuspenseFallback><Register /></PageSuspenseFallback> ,
+        element: (
+          <PageSuspenseFallback>
+            <Register />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "profile",
-        element:<ProtectedRoute><PageSuspenseFallback><Profile /></PageSuspenseFallback></ProtectedRoute>  ,
+        element: (
+          <ProtectedRoute>
+            <PageSuspenseFallback>
+              <Profile />
+            </PageSuspenseFallback>
+          </ProtectedRoute>
+        ),
       },
     ],
   },
