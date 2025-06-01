@@ -11,6 +11,8 @@ export default function UseCart() {
     const { items, productsFullInfo, error, loading } = useAppSelector(
         (state) => state.cart
       );
+      const userAccessToken = useAppSelector(
+        (state) => state.auth.accessToken)
       const dispatch = useAppDispatch();
       const products = productsFullInfo.map((el) => ({
         ...el,
@@ -35,6 +37,6 @@ export default function UseCart() {
         dispatch(cartItemRemove(id));
       }, []);
   return (
-    {loading,error,products,quantityChangeHandler,removeCartItem}
+    {loading,error,products,quantityChangeHandler,removeCartItem,userAccessToken}
   )
 }
