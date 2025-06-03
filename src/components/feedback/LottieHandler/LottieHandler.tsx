@@ -4,13 +4,15 @@ import Shopping from "@assets/LottieFiles/Shopping.json";
 import ShoppingEmpty from "@assets/LottieFiles/ShoppingEmpty.json";
 import error from "@assets/LottieFiles/error.json"
 import loading from "@assets/LottieFiles/loading.json"
+import successPlaceOrder from "@assets/LottieFiles/successPlaceOrder.json"
 
 const lottieFilesMap = {
   NotFound,
   Shopping,
   ShoppingEmpty,
   error,
-  loading
+  loading,
+  successPlaceOrder
 };
 type LottieHandlerProps = {
   type: keyof typeof lottieFilesMap;

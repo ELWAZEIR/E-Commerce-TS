@@ -3,25 +3,21 @@ import CategorySkeleton from "./Skeletons/CategorySkeleton/CategorySkeleton";
 import ProductSkeleton from "./Skeletons/ProductSkeleton/ProductSkeleton";
 import CartSkeleton from "./Skeletons/CartSkeleton/CartSkeleton";
 import LottieHandler from "./LottieHandler/LottieHandler";
-
+import TableSkeleton from "./Skeletons/TableSkeleton/TableSkeleton";
 const SkeletonsTypes={
   product:ProductSkeleton,
   cart:CartSkeleton,
-  category:CategorySkeleton
+  category:CategorySkeleton,
+  table:TableSkeleton 
 }
-
 type LoadingProps = {
   status: TLoading;
   error: null | string;
   children: React.ReactNode;
   type:keyof typeof SkeletonsTypes
 };
-
-
 const Loading = ({ status, error, children,type }: LoadingProps) => {
-
   const Component=SkeletonsTypes[type]
-
   if (status === "pending") {
     return <Component/>;
   }
@@ -30,5 +26,4 @@ const Loading = ({ status, error, children,type }: LoadingProps) => {
   }
   return <div>{children}</div>;
 };
-
 export default Loading;

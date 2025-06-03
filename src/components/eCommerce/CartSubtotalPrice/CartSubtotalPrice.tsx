@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useAppDispatch } from "@store/hooks";
 import actPlaceOrder from "@store/orders/act/actPlaceOrder";
 import { clearCartAfterPlaceOrder } from "@store/Cart/cartSlice";
-import { set } from "react-hook-form";
 
 type cartSubtotalPriceProps = {
   products: TProduct[];
