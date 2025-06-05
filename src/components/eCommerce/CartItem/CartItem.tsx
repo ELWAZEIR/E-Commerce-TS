@@ -43,7 +43,7 @@ const CartItem =memo(({ img, price, title, max, quantity, removeCartItem,quantit
       </ProductInfo>
 
       <div className={cartItemSelection}>
-        <span className="d-block mb-1">Quantity</span>
+        <span className="d-block mb-1"> Quantity </span>
         <Form.Select value={quantity} onChange={changeQuantity}>{renderOptionQuantity}</Form.Select>
       </div>
     </div>
