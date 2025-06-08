@@ -132,7 +132,7 @@ const HomePage = () => {
       {/* Categories Section */}
       <section className="categories py-5 bg-light">
         <Container>
-          <h2 className="text-center mb-5 fw-bold">Shop by Category</h2>
+          <h2 className="text-center mb-5 fw-bold">Shop By Category</h2>
           <Row className="g-4">
             {categories.map((category, index) => (
               <Col md={3} key={index}>
@@ -165,7 +165,7 @@ const HomePage = () => {
               <Col lg={3} md={6} key={product.id}>
                 <Card className="h-100 shadow-sm border-0 product-card">
                   <div className="position-relative">
-                    <Card.Img variant="top" src={product.image} width={100} height={400}/>
+                    <Card.Img variant="top" src={product.image} width={101} height={401}/>
                     <Badge bg="danger" className="position-absolute top-0 end-0 m-2">New</Badge>
                     <div className="card-actions position-absolute bottom-0 w-100 d-flex justify-content-center p-2">
                       <Button variant="light" size="sm" className="me-1">
@@ -174,9 +174,7 @@ const HomePage = () => {
                       <Button variant="light" size="sm" className="me-1">
                         <i className="bi bi-eye"></i>
                       </Button>
-                      {/* <Button variant="primary" size="sm">
-                        <i className="bi bi-cart-plus"></i> Add to Cart
-                      </Button> */}
+                     
                     </div>
                   </div>
                   <Card.Body>
@@ -205,7 +203,7 @@ const HomePage = () => {
         <Container>
           <Row className="align-items-center">
             <Col md={6}>
-              <h2 className="display-5 fw-bold">30% Off Men's Collection</h2>
+              <h2 className="display-5 fw-bold">34% Off Men's Collection</h2>
               <p className="lead">Special discounts on our men's clothing collection this season</p>
               <p className="mb-4">Offer valid until the end of the month</p>
               <Button variant="light" size="lg" className="px-5">Shop Now</Button>
