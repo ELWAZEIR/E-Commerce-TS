@@ -12,7 +12,6 @@ import {
 import '../styles/HomePage.css'; // Import your custom CSS for styling
 
 const HomePage = () => {
-  // Clothing products data
   const products = [
     {
       id: 1,
@@ -104,41 +103,6 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      {/* Navigation Bar */}
-      {/* <Navbar bg="light" expand="lg" className="shadow-sm">
-        <Container>
-          <Navbar.Brand href="#" className="fw-bold text-primary">Fashion Store</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#" className="active">Home</Nav.Link>
-              <Nav.Link href="#">Men</Nav.Link>
-              <Nav.Link href="#">Women</Nav.Link>
-              <Nav.Link href="#">Kids</Nav.Link>
-              <Nav.Link href="#">Sale</Nav.Link>
-            </Nav>
-            <div className="d-flex align-items-center">
-              <Form className="d-flex me-3">
-                <Form.Control
-                  type="search"
-                  placeholder="Search products..."
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="outline-primary">Search</Button>
-              </Form>
-              <div className="position-relative me-3">
-                <i className="bi bi-cart fs-4 text-dark"></i>
-                <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
-                  3
-                </Badge>
-              </div>
-              <Button variant="primary" className="me-2">Login</Button>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
-
       {/* Hero Carousel */}
       <Carousel className="mb-5">
         {bannerItems.map((item, index) => (
@@ -257,7 +221,6 @@ const HomePage = () => {
         </Container>
       </section>
 
-      {/* Newsletter */}
       <section className="newsletter py-5 bg-light">
         <Container className="text-center">
           <h2 className="fw-bold mb-3">Subscribe to Our Newsletter</h2>
@@ -273,56 +236,6 @@ const HomePage = () => {
         </Container>
       </section>
 
-      {/* Footer */}
-      {/* <footer className="bg-dark text-white py-5">
-        <Container>
-          <Row>
-            <Col md={4} className="mb-4">
-              <h4 className="fw-bold mb-4">Fashion Store</h4>
-              <p>The best online store to buy clothes and fashion items. We provide the latest fashion trends at competitive prices.</p>
-              <div className="social-icons mt-4">
-                <a href="#" className="text-white me-3"><i className="bi bi-facebook fs-5"></i></a>
-                <a href="#" className="text-white me-3"><i className="bi bi-instagram fs-5"></i></a>
-                <a href="#" className="text-white me-3"><i className="bi bi-twitter fs-5"></i></a>
-                <a href="#" className="text-white"><i className="bi bi-pinterest fs-5"></i></a>
-              </div>
-            </Col>
-            
-            <Col md={2} className="mb-4">
-              <h5 className="fw-bold mb-4">Quick Links</h5>
-              <ul className="list-unstyled">
-                <li className="mb-2"><a href="#" className="text-white">Home</a></li>
-                <li className="mb-2"><a href="#" className="text-white">About Us</a></li>
-                <li className="mb-2"><a href="#" className="text-white">Products</a></li>
-                <li className="mb-2"><a href="#" className="text-white">Contact</a></li>
-              </ul>
-            </Col>
-            
-            <Col md={2} className="mb-4">
-              <h5 className="fw-bold mb-4">Categories</h5>
-              <ul className="list-unstyled">
-                <li className="mb-2"><a href="#" className="text-white">Men</a></li>
-                <li className="mb-2"><a href="#" className="text-white">Women</a></li>
-                <li className="mb-2"><a href="#" className="text-white">Kids</a></li>
-                <li className="mb-2"><a href="#" className="text-white">Accessories</a></li>
-              </ul>
-            </Col>
-            
-            <Col md={4} className="mb-4">
-              <h5 className="fw-bold mb-4">Contact Info</h5>
-              <ul className="list-unstyled">
-                <li className="mb-2"><i className="bi bi-geo-alt me-2"></i> 123 Fashion Street, New York</li>
-                <li className="mb-2"><i className="bi bi-telephone me-2"></i> +1 234 567 8900</li>
-                <li className="mb-2"><i className="bi bi-envelope me-2"></i> info@fashionstore.com</li>
-              </ul>
-            </Col>
-          </Row>
-          
-          <div className="border-top mt-4 pt-4 text-center">
-            <p>© 2023 Fashion Store. All rights reserved.</p>
-          </div>
-        </Container>
-      </footer> */}
     </div>
   );
 };
