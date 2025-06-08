@@ -3,7 +3,7 @@ import { useAppSelector } from "@store/hooks";
 import { getCartTotalQuantitySelector } from "@store/Cart/selectors";
 import WishlistIcon from "@assets/svg/wishList.svg?react"
 import CarttIcon from "@assets/svg/cart.svg?react"
-import styles from "./headerLeftBar.module.css"
+import styles from "./styles.module.css"
 export default function HeaderLeftBar() {
     const {headerLeftBar}=styles
     const totalQuantityWishlist=useAppSelector((state)=>state.wishlist.itemsId.length)
