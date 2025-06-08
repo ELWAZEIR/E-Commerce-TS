@@ -1,4 +1,3 @@
-import Logo from "@assets/svg/wishList.svg?react";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +30,6 @@ const HeaderCounter = ({
   }, [totalQuantity]);
 
   return (
-    // <Link to="/cart" style={{textDecoration:"none" , color:'black'}}>
     <div className={container} onClick={() => navigat(to)}>
       <div className={iconWrapper}>
         {svgIcon}
@@ -41,7 +39,6 @@ const HeaderCounter = ({
       </div>
       <h3>{title}</h3>
     </div>
-    // </Link>
   );
 };
 
