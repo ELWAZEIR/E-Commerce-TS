@@ -1,5 +1,5 @@
 import Heading from "@components/common/heading/Heading";
-import ProductInfo from "@components/eCommerce/productInfo/productInfo";
+import ProductInfo from "@components/eCommerce/productInfo/ProductInfo";
 import Loading from "@components/feedback/Loding";
 import UseOrders from "@hooks/UseOrders";
 import { Modal, Table } from "react-bootstrap";

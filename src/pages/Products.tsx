@@ -18,6 +18,7 @@ const {error,loading,productsFullInfo,params}=UseProducts()
         <GridList<TProduct>
           records={productsFullInfo}
           renderItem={(record) => <Product {...record} />}
+          emptyMessage="No Product found."
         />
       </Loading>
     </Container>

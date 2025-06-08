@@ -15,7 +15,7 @@ const Categories = () => {
       
       
       <Loading status={loading} error={error} type="category">
-      <GridList<TCategory> records={records} renderItem={(record)=><Category {...record}/>}/>
+      <GridList<TCategory> records={records} renderItem={(record)=><Category {...record}/>} emptyMessage="No categories found."/>
       </Loading>
     </Container>
   );

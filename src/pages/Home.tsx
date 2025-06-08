@@ -1,9 +1,6 @@
 // HomePage.jsx
-import React from 'react';
 import { 
   Container, 
-  Navbar, 
-  Nav, 
   Carousel, 
   Row, 
   Col, 

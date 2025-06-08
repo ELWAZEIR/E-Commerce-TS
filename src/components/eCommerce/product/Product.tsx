@@ -7,7 +7,8 @@ import { Button, Modal, Spinner } from "react-bootstrap";
 import { actLikeToggle } from "@store/wishlist/wishlistSlice";
 import { useAppDispatch } from "@store/hooks";
 import { TProduct } from "@types";
-import ProductInfo from "../productInfo/productInfo";
+import ProductInfo from "../productInfo/ProductInfo";
+
 const { maximumNotice, wishlistBtn } = styles;
 const Product = memo(
   ({ id, title, img, price, max, quantity, isLiked,isAuthenticated }: TProduct) => {
