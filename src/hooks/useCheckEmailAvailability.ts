@@ -3,6 +3,9 @@ import axios from "axios";
 
 type TStatus = "idle" | "checking" | "available" | "notAvailable" | "failed";
 
+// ضبط الـ baseURL مرة واحدة لكل طلبات axios
+axios.defaults.baseURL = "https://redux-tolkit.onrender.com";
+
 const useCheckEmailAvailability = () => {
   const [emailAvailabilityStatus, setEmailAvailabilityStatus] = useState<TStatus>("idle");
   const [enteredEmail, setEnteredEmail] = useState<null | string>(null);
@@ -17,7 +20,8 @@ const useCheckEmailAvailability = () => {
       } else {
         setEmailAvailabilityStatus("notAvailable");
       }
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Failed to check email availability:", error?.response?.status, error?.message);
       setEmailAvailabilityStatus("failed");
     }
   };
@@ -34,4 +38,5 @@ const useCheckEmailAvailability = () => {
     resetCheckEmailAvailability,
   };
 };
+
 export default useCheckEmailAvailability;

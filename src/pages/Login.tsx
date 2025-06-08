@@ -40,7 +40,7 @@ function Login() {
               type="password"
             />
 
-            <Button variant="info" type="submit" style={{ color: "while" }}>
+            <Button variant="info" type="submit" style={{ color: "white" }}>
               {loading === "pending" ? (
                 <>
                   <Spinner animation="grow" size="sm"></Spinner>

@@ -69,7 +69,7 @@ if(accessToken)return <Navigate to="/"/>
               disabled={emailAvailabilityStatus === "checking" ? true : false || loading==="pending"}
               variant="info"
               type="submit"
-              style={{ color: "while" }}
+              style={{ color: "white" }}
             >
               {loading==="pending" ?(<>
                 <Spinner animation="grow" size="sm"> </Spinner> Loding...  </>):("submit")
