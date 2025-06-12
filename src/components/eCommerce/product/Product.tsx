@@ -11,7 +11,16 @@ import ProductInfo from "../productInfo/ProductInfo";
 
 const { maximumNotice, wishlistBtn } = styles;
 const Product = memo(
-  ({ id, title, img, price, max, quantity, isLiked,isAuthenticated }: TProduct) => {
+  ({
+    id,
+    title,
+    img,
+    price,
+    max,
+    quantity,
+    isLiked,
+    isAuthenticated,
+  }: TProduct) => {
     const dispatch = useAppDispatch();
     const [showModal, setShowModal] = useState(false);
     const [isBtnDisabled, setIsBtnDisabled] = useState(false);
@@ -35,57 +44,66 @@ const Product = memo(
 
     const likeToggleHandler = () => {
       if (isAuthenticated) {
-          if (!isLoading) {  //This condition does not allow me to send too many requests.
-            setIsLoading(true);
-            dispatch(actLikeToggle(id))
-              .unwrap()
-              .then(() => setIsLoading(false))
-              .catch(() => setIsLoading(false));
-          }
-        } else {
-          setShowModal(true);
+        if (!isLoading) {
+          //This condition does not allow me to send too many requests.
+          setIsLoading(true);
+          dispatch(actLikeToggle(id))
+            .unwrap()
+            .then(() => setIsLoading(false))
+            .catch(() => setIsLoading(false));
         }
+      } else {
+        setShowModal(true);
+      }
     };
 
     return (
-      <> <Modal show={showModal} onHide={() => setShowModal(false)}>
-      <Modal.Header closeButton>
-        <Modal.Title>Login Required</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        You need to login first to add this item to your wishlist.
-      </Modal.Body>
-    </Modal>
-     
-      <ProductInfo title={title}img={img} price={price}>
-        <div className={wishlistBtn} onClick={likeToggleHandler}>
-          {isLoading ? (
-            <Spinner animation="border" size="sm" variant="primary" />
-          ) : isLiked ? (
-            <LikeFill />
-          ) : (
-            <Like />
-          )}
-        </div>
-        
-        <p className={maximumNotice}>
-          {quantityReachedToMax
-            ? "You reach to the limit"
-            : `you can add ${currentRemainingQuantity} item(s)`}
-        </p>
-        <Button
-          variant="info"
-          style={{ color: "white" ,width:"100%"}}
-          onClick={addToCartHandler}
-          disabled={isBtnDisabled || quantityReachedToMax}
-        >
-          {isBtnDisabled ? (
-            <Spinner animation="grow" size="sm" />
-          ) : (
-            "Add to cart"
-          )}
-        </Button>
-      </ProductInfo> </>
+      <>
+        {" "}
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Login Required</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            You need to login first to add this item to your wishlist.
+          </Modal.Body>
+        </Modal>
+        <ProductInfo title={title} img={img} price={price}>
+          <div className={wishlistBtn} onClick={likeToggleHandler}>
+            {isLoading ? (
+              <Spinner animation="border" size="sm" variant="primary" />
+            ) : isLiked ? (
+              <LikeFill />
+            ) : (
+              <Like />
+            )}
+          </div>
+
+          <p className={maximumNotice}>
+            {quantityReachedToMax ? (
+              <p style={{ color: "red" }}>You reached the limit</p>
+            ) : (
+              `you can add ${currentRemainingQuantity} item(s)`
+            )}
+          </p>
+          <Button
+            variant="info"
+            style={
+              quantityReachedToMax
+                ? { backgroundColor: "red",width: "100%" , color: "white",border: "none" }
+                : { color: "white", width: "100%" }
+            }
+            onClick={addToCartHandler}
+            disabled={isBtnDisabled || quantityReachedToMax}
+          >
+            {isBtnDisabled ? (
+              <Spinner animation="grow" size="sm" />
+            ) : (
+              "Add to cart"
+            )}
+          </Button>
+        </ProductInfo>{" "}
+      </>
     );
   }
 );

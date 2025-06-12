@@ -10,6 +10,7 @@ import {
   Badge
 } from 'react-bootstrap';
 import '../styles/HomePage.css'; // Import your custom CSS for styling
+import { Link, useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const products = [
@@ -67,11 +68,9 @@ const HomePage = () => {
       name: 'Formal Suit',
       price: 199.99,
       category: 'Men',
-      image: 'https://images.unsplash.com/photo-1598808503746-f34cfb6c2524?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1749072624357-9ca89036324d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw5Nnx8fGVufDB8fHx8fA%3D%3D'
     }
   ];
-
-  // Clothing categories
   const categories = [
     { name: 'Men', image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
     { name: 'Women', image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
@@ -79,8 +78,7 @@ const HomePage = () => {
     { name: 'Accessories', image: 'https://images.unsplash.com/photo-1591561954557-26941169b49e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' }
   ];
 
-  // Banner items
-  const bannerItems = [
+ const bannerItems = [
     {
       title: 'Up to 50% Off',
       description: 'On our summer collection',
@@ -100,7 +98,7 @@ const HomePage = () => {
       buttonText: 'View Details'
     }
   ];
-
+const navigate=useNavigate();
   return (
     <div className="home-page">
       {/* Hero Carousel */}
@@ -121,7 +119,6 @@ const HomePage = () => {
                 <div className="banner-content text-white text-center">
                   <h1 className="display-4 fw-bold">{item.title}</h1>
                   <p className="lead mb-4">{item.description}</p>
-                  {/* <Button variant="light" size="lg" className="px-5">{item.buttonText}</Button> */}
                 </div>
               </Container>
             </div>
@@ -129,35 +126,34 @@ const HomePage = () => {
         ))}
       </Carousel>
 
-      {/* Categories Section */}
       <section className="categories py-5 bg-light">
         <Container>
           <h2 className="text-center mb-5 fw-bold">Shop By Category</h2>
           <Row className="g-4">
             {categories.map((category, index) => (
               <Col md={3} key={index}>
-                <div className="category-card position-relative rounded overflow-hidden shadow">
-                  <img 
-                    src={category.image} 
-                    alt={category.name}
-                    className="img-fluid"
-                  />
-                  <div className="overlay d-flex align-items-center justify-content-center">
-                    <h3 className="text-white fw-bold">{category.name}</h3>
+                <Link to={`/categories/products/${category.name.toLowerCase()}`} className="text-decoration-none text-dark">
+                  <div className="category-card position-relative rounded overflow-hidden shadow">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="img-fluid"
+                    />
+                    <div className="overlay d-flex align-items-center justify-content-center">
+                      <h3 className="text-white fw-bold">{category.name}</h3>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </Col>
             ))}
           </Row>
         </Container>
       </section>
 
-      {/* Featured Products */}
       <section className="featured-products py-5">
         <Container>
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h2 className="fw-bold">New Arrivals</h2>
-            <Button variant="outline-primary">View All</Button>
           </div>
           
           <Row className="g-4">
@@ -203,10 +199,10 @@ const HomePage = () => {
         <Container>
           <Row className="align-items-center">
             <Col md={6}>
-              <h2 className="display-5 fw-bold">34% Off Men's Collection</h2>
+              <h2 className="display-5 fw-bold">30% Off Men's Collection</h2>
               <p className="lead">Special discounts on our men's clothing collection this season</p>
               <p className="mb-4">Offer valid until the end of the month</p>
-              <Button variant="light" size="lg" className="px-5">Shop Now</Button>
+              <Button onClick={() => navigate('/categories/products/men')} variant="light" size="lg" className="px-5">Shop Now</Button>
             </Col>
             <Col md={6} className="text-center">
               <img 
